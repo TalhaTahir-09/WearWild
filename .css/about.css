@@ -1,0 +1,55 @@
+.ingredients-page-main {
+   background-image: url(../assets/Images/About/ingredients-bc.avif);
+}
+.mission-page-main{
+   background-image: url(../assets/Images/About/mission.bc.avif);
+}
+
+.flex-flow {
+   row-gap: 13rem;
+}
+
+.article > * {
+   margin-top: 2rem;
+   width: 620px;
+}
+
+.article {
+   gap: 1rem;
+}
+
+.faq-heading {
+   justify-content: flex-start;
+}
+
+.FAQs-opener-1:checked+.faq-answer {
+   display: block;
+}
+.FAQs-opener-2:checked +.faq-answer {
+   display: block;
+}
+
+.faq-heading {
+   margin-bottom: 3rem;
+}
+
+.faq-seperator {
+   content: "";
+   width: 100%;
+   height: 6px;
+   background-image: radial-gradient(#434343 -30%, transparent 30%);
+   background-size: 6px;
+   background-repeat: space;
+}
+.article h2{
+   margin-top: 5rem;
+   margin-bottom: 5rem
+}
+.article-main-para{
+   margin-bottom: 5rem;
+}
+.ingredients-section{
+   gap: 7rem;
+  padding: 0  7rem;
+  margin: 7rem 0 10rem 0;
+}

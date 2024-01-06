@@ -34,7 +34,7 @@
     }
 
     .shopping-cards {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
 }
@@ -251,6 +251,12 @@
         margin-bottom: 11.5rem;
         row-gap: 10.5rem;
     }
+    .article > * {
+        width: 100% !important;
+     }
+     .article{
+        padding: 2rem;
+     }
 
 }
 
@@ -343,6 +349,7 @@
 }
 
 @media screen and (max-width: 800px) {
+    
     .display-none-800px {
         display: none;
     }
