@@ -2,6 +2,9 @@
     .bundle-main {
         padding: 0 6px;
     }
+    .navbar-ul{
+        gap: 15px !important;
+    }
 
 }
 
@@ -148,6 +151,20 @@
         align-items: center;
         display: flex;
         flex-direction: column;
+    }
+
+    .header-content-about {
+        align-items: flex-start;
+    }
+
+    .flex-flow {
+        row-gap: 4rem !important;
+    }
+
+    .header-content h1 {
+        font-size: 38px;
+        line-height: 43px;
+        margin-left: 2rem;
     }
 
     .header-br {
@@ -492,6 +509,7 @@
     .planet-refill {
         width: 150px;
     }
+
     .planet-refill-bottle {
         width: 70px;
     }
@@ -707,6 +725,7 @@
     .planet-refill {
         width: 98px;
     }
+
     .planet-refill-bottle {
         width: 50px;
     }
@@ -752,8 +771,13 @@
     .shopping-img {
         width: 13vw;
     }
-    .navbar-li br{
+
+    .navbar-li br {
         display: none;
+    }
+    .navbar{
+        padding: 0 2rem;
+
     }
 
 }
