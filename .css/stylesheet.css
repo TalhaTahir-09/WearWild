@@ -113,7 +113,7 @@ button {
 
 .main-page-main {
     background-image: url(../assets/Images/MainBc.png);
-    height: 100vh;
+    height: 800px;
     background-repeat: no-repeat;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 20px;
@@ -727,6 +727,9 @@ h6 {
 .shopping-card:hover .large-product-imgs {
     transform: translateY(-8px);
 }
+.shopping-card:hover .extra-large-product-imgs {
+    transform: translateY(-8px);
+}
 
 .shopping-card:hover .bottle-for-life {
     transform: translateX(-50%) translateY(-8px);
@@ -736,6 +739,7 @@ h6 {
     transform: translateY(-8px) rotateZ(-32deg);
 }
 
+.extra-large-product-imgs,
 .large-product-imgs,
 .shopping-img,
 .bottle-for-life,
@@ -837,7 +841,7 @@ h6 {
     left: -18px;
     border-radius: 5px;
     padding: 3px 6px;
-    z-index: 999;
+    z-index: 998;
 }
 
 .add-button {
