@@ -267,7 +267,7 @@
             <nav class="navbar-nav">
                 <ul class="navbar-ul flex-start">
                     <li class="navbar-li">
-                        <input type="checkbox" id="menu-checkbox" class="menu-checkbox display-none">
+                        <input type="radio" name="navbar-menu" id="menu-checkbox" class="menu-checkbox display-none">
                         <label for="menu-checkbox"
                           class="navbar-a font-1-500 p-4 font-color-black-light no-wrap flex-center upper-case">Deodorant
                           <i class='nav-arrow bx bxs-chevron-down'></i>
@@ -294,7 +294,7 @@
                               <p class="menu-heading-row font-1-500 font-color-black-light p-3 ">Bundles</p>
                             </div>
                           </a>
-                          <a href="deodorant-bundle.html">
+                          <a href="deodorant-cases.html">
                             <div class="menu-row  menu-row-3">
                               <img src="assets/Images/Drop Down/2-case.jpg" class="dropdown-imgs">
                               <p class="menu-heading-row font-1-500 font-color-black-light p-3">Cases</p>
@@ -315,7 +315,7 @@
                         </div>
                       </li>
                       <li class="navbar-li">
-                        <input type="checkbox" id="menu-checkbox-2" class="menu-checkbox-2 display-none">
+                        <input type="radio" name="navbar-menu" id="menu-checkbox-2" class="menu-checkbox-2 display-none">
                         <label for="menu-checkbox-2"
                           class="navbar-a font-1-500 p-4 font-color-black-light no-wrap flex-center upper-case">Body Wash
                           <i class='nav-arrow bx bxs-chevron-down'></i>
@@ -357,7 +357,7 @@
                         </div>
                       </li>
                       <li class="navbar-li">
-                        <input type="checkbox" id="menu-checkbox-3" class="menu-checkbox-3 display-none">
+                        <input type="radio" name="navbar-menu" id="menu-checkbox-3" class="menu-checkbox-3 display-none">
                         <label for="menu-checkbox-3"
                           class="navbar-a font-1-500 p-4 font-color-black-light no-wrap flex-center upper-case">Bars
                           <i class='nav-arrow bx bxs-chevron-down'></i>
@@ -378,7 +378,7 @@
                         </div>
                       </li>
                       <li class="navbar-li">
-                        <input type="checkbox" id="menu-checkbox menu-checkbox-4"
+                        <input type="radio" name="navbar-menu" id="menu-checkbox menu-checkbox-4"
                             class="menu-checkbox menu-checkbox-4 display-none">
                         <label for="menu-checkbox menu-checkbox-4"
                             class="navbar-a font-1-500 p-4 font-color-black-light no-wrap flex-center upper-case">About
@@ -490,6 +490,8 @@
         </header>
         </div>
         <div class="all-shopping-cards position-relative-1">
+            <div class="page-wrapper">
+
             <!-- Row Number 1 -->
 
             <div class="shopping-cards">
@@ -2367,6 +2369,7 @@
             </div>
 
         </div>
+</div>
     </main>
 </body>
 
@@ -2572,10 +2575,53 @@
     </div>
 </footer>
 
-<div class="loading-bar-container">
-    <div class="loading-bar"></div>
+<div id="loader">
+  <div class="loader-content">
+    <span id="percentage">0%</span>
+
+    <div class="bar">
+      <div class="fill" id="fill"></div>
+    </div>
+  </div>
 </div>
 
 
+<script>
+  const percent = document.getElementById("percentage");
+  const fill = document.getElementById("fill");
+  const loader = document.getElementById("loader");
+
+  let count = 0;
+
+  const baseStops = { 34: 120, 38: 120, 72: 180, 94: 240 };
+  function getStopDelay(step) { const base = baseStops[step]; if (!base) return null; const jitter = Math.floor(base * (Math.random() * 0.6 - 0.3)); return Math.max(40, base + jitter); }
+
+  function updateLoader() {
+    if (count < 95) { count += 2; if (count > 95) count = 95; } else { count++; }
+
+    percent.textContent = count + "%";
+    fill.style.width = count + "%";
+
+    const stopDelay = getStopDelay(count); if (stopDelay) { setTimeout(updateLoader, stopDelay); return; }
+
+    const speed = count < 50 ? 6 : count < 80 ? 12 : 24;
+
+    if (count < 100) { setTimeout(updateLoader, speed); } else {
+      setTimeout(() => { loader.style.opacity = "0"; loader.style.transition = "opacity 0.3s ease"; setTimeout(() => loader.style.display = "none", 200); }, 150);
+    }
+  }
+
+  updateLoader();
+</script>
+    document.addEventListener("click", function (e) {
+      const nav = document.querySelector(".navbar-ul");
+      const radios = document.querySelectorAll('input[name="navbar-menu"]');
+
+      // If click is outside navbar
+      if (!nav.contains(e.target)) {
+        radios.forEach(radio => radio.checked = false);
+      }
+    });
+  </script>
 
 </html>
