@@ -1558,41 +1558,35 @@
 
   <script>
     const percent = document.getElementById("percentage");
-    const fill = document.getElementById("fill");
-    const loader = document.getElementById("loader");
+  const fill = document.getElementById("fill");
+  const loader = document.getElementById("loader");
 
-    let count = 0;
+  let count = 0;
 
-    const baseStops = { 34: 700, 38: 700, 72: 900, 94: 1200 };
-    function getStopDelay(step) {
-      const base = baseStops[step];
-      if (!base) return null;
-      const jitter = Math.floor(base * (Math.random() * 0.4 - 0.2));
-      return Math.max(80, base + jitter);
+  const baseStops = { 34: 120, 38: 120, 72: 180, 94: 240 };
+  function getStopDelay(step) { const base = baseStops[step]; if (!base) return null; const jitter = Math.floor(base * (Math.random() * 0.6 - 0.3)); return Math.max(40, base + jitter); }
+
+  function updateLoader() {
+    count++;
+    percent.textContent = count + "%";
+    fill.style.width = count + "%";
+
+    const stopDelay = getStopDelay(count); if (stopDelay) { setTimeout(updateLoader, stopDelay); return; }
+
+    const speed = count < 50 ? 10 : count < 80 ? 20 : 40;
+
+    if (count < 100) {
+      setTimeout(updateLoader, speed);
+    } else {
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.transition = "opacity 0.4s ease";
+        setTimeout(() => loader.style.display = "none", 400);
+      }, 250);
     }
+  }
 
-    function updateLoader() {
-      count++;
-      percent.textContent = count + "%";
-      fill.style.width = count + "%";
-
-      const stopDelay = getStopDelay(count);
-      if (stopDelay) { setTimeout(updateLoader, stopDelay); return; }
-
-      const speed = count < 50 ? 20 : count < 80 ? 40 : 80;
-
-      if (count < 100) {
-        setTimeout(updateLoader, speed);
-      } else {
-        setTimeout(() => {
-          loader.style.opacity = "0";
-          loader.style.transition = "opacity 0.6s ease";
-          setTimeout(() => loader.style.display = "none", 600);
-        }, 400);
-      }
-    }
-
-    updateLoader();
+  updateLoader();
     document.addEventListener("click", function (e) {
       const nav = document.querySelector(".navbar-ul");
       const radios = document.querySelectorAll('input[name="navbar-menu"]');
@@ -1625,7 +1619,7 @@
           btn.style.opacity = '0.85';
 
           btn.style.transform = 'scale(0.98)';
-          setTimeout(() => btn.style.transform = '', 100);
+          setTimeout(() => btn.style.transform = '', 50);
         });
       });
     });
