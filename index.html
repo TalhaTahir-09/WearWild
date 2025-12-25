@@ -761,14 +761,14 @@
       </div>
     </div>
     <div class="scroller pointer">
-      <a href=""><i
+      <a><i
           class='bx bx-chevron-right button-arrow-heads arrow-color-white arrow-bg-dark-gr large-green-1 large-bg'></i></a>
-      <a href=""><i
+      <a><i
           class='bx bx-chevron-right button-arrow-heads arrow-color-white arrow-bg-dark-gr large-green-2 large-bg'></i></a>
     </div>
   </div>
 
-  <div class="shopping-cards shopping-cards-main">
+  <div class="shopping-cards shopping-cards-main" >
 
     <!-- 1 -->
     <div class="shopping-card">
@@ -1025,15 +1025,15 @@
       </div>
     </div>
     <div class="scroller pointer">
-      <a href=""><i
+      <a><i
           class='bx bx-chevron-right button-arrow-heads arrow-color-white arrow-bg-dark-gr large-green-1 large-bg'></i></a>
-      <a href=""><i
+      <a><i
           class='bx bx-chevron-right button-arrow-heads arrow-color-white arrow-bg-dark-gr large-green-2 large-bg'></i></a>
     </div>
   </div>
 
 
-  <div class="shopping-cards shopping-cards-main">
+  <div class="shopping-cards shopping-cards-main" style="align-items:baseline;">
 
     <!-- 1 -->
     <div class="shopping-card">
@@ -1567,7 +1567,6 @@
     function getStopDelay(step) {
       const base = baseStops[step];
       if (!base) return null;
-      // index: smaller jitter +/-20%
       const jitter = Math.floor(base * (Math.random() * 0.4 - 0.2));
       return Math.max(80, base + jitter);
     }
@@ -1598,13 +1597,39 @@
       const nav = document.querySelector(".navbar-ul");
       const radios = document.querySelectorAll('input[name="navbar-menu"]');
 
-      // If click is outside navbar
       if (!nav.contains(e.target)) {
         radios.forEach(radio => radio.checked = false);
       }
     });
   </script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.shop-all').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          window.location.href = 'shop-all.html';
+        });
+      });
+
+      document.querySelectorAll('.add-button button').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (btn.classList.contains('added')) return;
+
+          btn.classList.add('added');
+          btn.innerHTML = 'ADDED <i class="fa-solid fa-check"></i>';
+          btn.disabled = true;
+          btn.style.opacity = '0.85';
+
+          btn.style.transform = 'scale(0.98)';
+          setTimeout(() => btn.style.transform = '', 100);
+        });
+      });
+    });
+  </script>
 
 </body>
 

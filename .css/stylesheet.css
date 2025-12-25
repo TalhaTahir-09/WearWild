@@ -770,6 +770,13 @@ h6 {
   justify-content: left;
   align-items: center;
   width: 100%;
+  gap: 2rem; 
+  margin-top: 2rem; 
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+  .shopping-cards { gap: 1rem; margin-top: 1rem; overflow-x: auto; }
 }
 .card-content{
     padding: 0 !important;
